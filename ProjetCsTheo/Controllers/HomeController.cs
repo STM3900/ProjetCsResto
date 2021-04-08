@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ds.Database;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ProjetCsTheo.Models;
 using System;
@@ -16,10 +17,12 @@ namespace ProjetCsTheo.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            ApplicationDBContext context = new ApplicationDBContext();
         }
 
         public IActionResult Index()
         {
+            ViewBag.allResto = ApplicationDBContext.getAllResto();
             return View();
         }
 

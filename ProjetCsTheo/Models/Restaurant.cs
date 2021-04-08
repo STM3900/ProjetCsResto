@@ -7,6 +7,7 @@ namespace ProjetCsTheo.Models
 {
     public class Restaurant
     {
+        public Restaurant() { }
         public int Id { get; set; }
         public String Name { get; set; }
         public String Phone { get; set; }

@@ -14,7 +14,7 @@ namespace ds.Database
     public class ApplicationDBContext : DbContext
     {
         public static MySqlConnection con;
-        string connectStr = "server=localhost;uid=root;pwd=;database=restoDEMER";
+        string connectStr = "server=localhost;uid=root;pwd=;database=csproject";
         public virtual DbSet<Restaurant> resto { get; set; }
 
         public ApplicationDBContext()
@@ -35,7 +35,7 @@ namespace ds.Database
 
         public static List<Restaurant> getAllResto()
         {
-            string sql = "SELECT * from resto";
+            string sql = "SELECT * from restaurant";
             MySqlCommand cmd = new MySqlCommand(sql, ApplicationDBContext.con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             List<Restaurant> restos = new List<Restaurant>();
