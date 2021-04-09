@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Edit resto";
+    Restaurant r = ViewBag.resto;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Création du restaurant</h1>
+    <form method="post" action="EditQuery">
+
+        <input type="text" value="@r.Id" name="id" hidden /><br />
+
+        <label for="name">Nom du restaurant</label>
+        <input type="text" value="@r.Name" name="name" required /><br />
+
+        <label for="phone">Téléphone</label>
+        <input type="text" value="@r.Phone" name="phone" required /><br />
+
+        <label for="commentary">Description</label>
+        <input type="text" value="@r.Commentary" name="commentary" required /><br />
+
+        <label for="email">Email</label>
+        <input type="email" value="@r.Email" name="email" required /><br />
+
+        <label for="street">Adresse</label>
+        <input type="text" value="@r.Street" name="street" required /><br />
+
+        <label for="zip">Code postal</label>
+        <input type="number" value="@r.Zip" name="zip" required /><br />
+
+        <label for="city">Ville</label>
+        <input type="text" value="@r.City" name="city" required /><br />
+
+        <label for="lastTimeVisited">Date de dernière visite</label>
+        <input type="date" value="@r.LastTimeVisited.Replace("/", "-")" name="lastTimeVisited" required /><br />
+
+        <label for="note">Note</label>
+        <input type="number" value="@r.Note" min="1" max="5" name="note" required /><br />
+
+        <label for="noteCommentary">Commentaire de la note</label>
+        <input type="text" value="@r.NoteCommentary" name="noteCommentary" required /><br />
+
+        <input type="submit" value="Modifier le restaurant" />
+    </form>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Listing" asp-action="Index">Retour</a>
+</div>

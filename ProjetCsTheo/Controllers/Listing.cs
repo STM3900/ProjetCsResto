@@ -60,6 +60,31 @@ namespace ProjetCsTheo.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Edit(int idResto)
+        {
+            ViewBag.resto = ApplicationDBContext.getRestoWithId(idResto);
+            return View();
+        }
+
+        public IActionResult EditQuery(int id, String name, String phone, String commentary, String email, String street, int zip, String city, String lastTimeVisited, int note, String noteCommentary)
+        {
+            Restaurant tempResto = new Restaurant();
+            tempResto.Id = id;
+            tempResto.Name = name;
+            tempResto.Phone = phone;
+            tempResto.Commentary = commentary;
+            tempResto.Email = email;
+            tempResto.Street = street;
+            tempResto.Zip = zip;
+            tempResto.City = city;
+            tempResto.LastTimeVisited = lastTimeVisited;
+            tempResto.Note = note;
+            tempResto.NoteCommentary = noteCommentary;
+
+            ApplicationDBContext.editResto(tempResto);
+            return RedirectToAction("Index");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

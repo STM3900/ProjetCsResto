@@ -14,7 +14,7 @@ namespace ds.Database
     public class ApplicationDBContext : DbContext
     {
         public static MySqlConnection con;
-        string connectStr = "server=localhost;uid=root;pwd=;database=csproject";
+        String connectStr = "server=localhost;uid=root;pwd=;database=csproject";
         public virtual DbSet<Restaurant> resto { get; set; }
 
         public ApplicationDBContext()
@@ -35,7 +35,7 @@ namespace ds.Database
 
         public static List<Restaurant> getAllResto()
         {
-            string sql = "SELECT * from restaurant";
+            String sql = "SELECT * from restaurant";
             MySqlCommand cmd = new MySqlCommand(sql, ApplicationDBContext.con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             List<Restaurant> restos = new List<Restaurant>();
@@ -59,7 +59,7 @@ namespace ds.Database
         }
         public static List<Restaurant> getFiveBest()
         {
-            string sql = "SELECT * FROM restaurant ORDER BY note DESC LIMIT 5";
+            String sql = "SELECT * FROM restaurant ORDER BY note DESC LIMIT 5";
             MySqlCommand cmd = new MySqlCommand(sql, ApplicationDBContext.con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             List<Restaurant> restos = new List<Restaurant>();
@@ -84,14 +84,14 @@ namespace ds.Database
 
         public static void deleteResto(int id)
         {
-            string sql = "DELETE FROM restaurant WHERE id=" + id;
+            String sql = "DELETE FROM restaurant WHERE id=" + id;
             MySqlCommand cmd = new MySqlCommand(sql, ApplicationDBContext.con);
             cmd.ExecuteNonQuery();
         }
 
         public static void addResto(Restaurant resto)
         {
-            string sql = "INSERT INTO `restaurant`(`name`, `phone`, `commentary`, `email`, `street`, `zip`, `city`, `lastTimeVisited`, `note`, `noteCommentary`) VALUES (";
+            String sql = "INSERT INTO `restaurant`(`name`, `phone`, `commentary`, `email`, `street`, `zip`, `city`, `lastTimeVisited`, `note`, `noteCommentary`) VALUES (";
             sql += "'" + resto.Name + "',";
             sql += "'" + resto.Phone + "',";
             sql += "'" + resto.Commentary + "',";
@@ -104,6 +104,37 @@ namespace ds.Database
             sql += "'" + resto.NoteCommentary + "')";
             MySqlCommand cmd = new MySqlCommand(sql, ApplicationDBContext.con);
             cmd.ExecuteNonQuery();
+        }
+
+        public static void editResto(Restaurant resto)
+        {
+            String sql = "UPDATE `restaurant` SET `name`='" + resto.Name + "',`phone`='" + resto.Phone + "',`commentary`='" + resto.Commentary + "',`email`='" + resto.Email + "',`street`='" + resto.Street + "'," +
+                "`zip`=" + resto.Zip + ",`city`='" + resto.City + "',`lastTimeVisited`='" + resto.LastTimeVisited + "',`note`='" + resto.Note + "',`noteCommentary`='" + resto.NoteCommentary + "' WHERE id=" + resto.Id;
+            MySqlCommand cmd = new MySqlCommand(sql, ApplicationDBContext.con);
+            cmd.ExecuteNonQuery();
+        }
+
+        public static Restaurant getRestoWithId(int id)
+        {
+            String sql = "SELECT * from restaurant WHERE id=" + id;
+            MySqlCommand cmd = new MySqlCommand(sql, ApplicationDBContext.con);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            Restaurant resto = new Restaurant();
+            while (rdr.Read())
+            {
+                resto.Id = (int)rdr[0];
+                resto.Name = (string)rdr[1];
+                resto.Phone = (string)rdr[2];
+                resto.Commentary = (string)rdr[3];
+                resto.Email = (string)rdr[4];
+                resto.Street = (string)rdr[5];
+                resto.Zip = (int)rdr[6];
+                resto.City = (string)rdr[7];
+                resto.LastTimeVisited = (string)rdr[8];
+                resto.Note = (int)rdr[9];
+                resto.NoteCommentary = (string)rdr[10];
+            }
+            return resto;
         }
     }
 }
