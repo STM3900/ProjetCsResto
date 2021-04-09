@@ -88,5 +88,22 @@ namespace ds.Database
             MySqlCommand cmd = new MySqlCommand(sql, ApplicationDBContext.con);
             cmd.ExecuteNonQuery();
         }
+
+        public static void addResto(Restaurant resto)
+        {
+            string sql = "INSERT INTO `restaurant`(`name`, `phone`, `commentary`, `email`, `street`, `zip`, `city`, `lastTimeVisited`, `note`, `noteCommentary`) VALUES (";
+            sql += "'" + resto.Name + "',";
+            sql += "'" + resto.Phone + "',";
+            sql += "'" + resto.Commentary + "',";
+            sql += "'" + resto.Email + "',";
+            sql += "'" + resto.Street + "',";
+            sql += "'" + resto.Zip + "',";
+            sql += "'" + resto.City + "',";
+            sql += "'" + resto.LastTimeVisited.Replace("-", "/") + "',";
+            sql += "'" + resto.Note + "',";
+            sql += "'" + resto.NoteCommentary + "')";
+            MySqlCommand cmd = new MySqlCommand(sql, ApplicationDBContext.con);
+            cmd.ExecuteNonQuery();
+        }
     }
 }

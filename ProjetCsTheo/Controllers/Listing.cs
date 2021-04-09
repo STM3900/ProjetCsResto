@@ -36,6 +36,24 @@ namespace ProjetCsTheo.Controllers
             return View();
         }
 
+        public IActionResult CreateResto(String name, String phone, String commentary, String email, String street, int zip, String city, String lastTimeVisited, int note, String noteCommentary)
+        {
+            Restaurant tempResto = new Restaurant();
+            tempResto.Name = name;
+            tempResto.Phone = phone;
+            tempResto.Commentary = commentary;
+            tempResto.Email = email;
+            tempResto.Street = street;
+            tempResto.Zip = zip;
+            tempResto.City = city;
+            tempResto.LastTimeVisited = lastTimeVisited;
+            tempResto.Note = note;
+            tempResto.NoteCommentary = noteCommentary;
+
+            ApplicationDBContext.addResto(tempResto);
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Delete(int idResto)
         {
             ApplicationDBContext.deleteResto(idResto);
