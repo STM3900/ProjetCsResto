@@ -46,13 +46,20 @@ namespace ds.Database
                 temp.Name = (string)rdr[1];
                 temp.Phone = (string)rdr[2];
                 temp.Commentary = (string)rdr[3];
+                temp.Email = (string)rdr[4];
+                temp.Street = (string)rdr[5];
+                temp.Zip = (int)rdr[6];
+                temp.City = (string)rdr[7];
+                temp.LastTimeVisited = (string)rdr[8];
+                temp.Note = (int)rdr[9];
+                temp.NoteCommentary = (string)rdr[10];
                 restos.Add(temp);
             }
             return restos;
         }
         public static List<Restaurant> getFiveBest()
         {
-            string sql = "SELECT * FROM `restaurant` ORDER BY note DESC LIMIT 5";
+            string sql = "SELECT * FROM restaurant ORDER BY note DESC LIMIT 5";
             MySqlCommand cmd = new MySqlCommand(sql, ApplicationDBContext.con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             List<Restaurant> restos = new List<Restaurant>();
@@ -63,6 +70,13 @@ namespace ds.Database
                 temp.Name = (string)rdr[1];
                 temp.Phone = (string)rdr[2];
                 temp.Commentary = (string)rdr[3];
+                temp.Email = (string)rdr[4];
+                temp.Street = (string)rdr[5];
+                temp.Zip = (int)rdr[6];
+                temp.City = (string)rdr[7];
+                temp.LastTimeVisited = (string)rdr[8];
+                temp.Note = (int)rdr[9];
+                temp.NoteCommentary = (string)rdr[10];
                 restos.Add(temp);
             }
             return restos;
