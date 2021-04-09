@@ -22,7 +22,7 @@ namespace ProjetCsTheo.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.allResto = ApplicationDBContext.getAllResto();
+            ViewBag.fiveBest = ApplicationDBContext.getFiveBest();
             return View();
         }
 

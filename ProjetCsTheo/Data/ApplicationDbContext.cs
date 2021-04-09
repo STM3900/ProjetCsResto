@@ -50,5 +50,22 @@ namespace ds.Database
             }
             return restos;
         }
+        public static List<Restaurant> getFiveBest()
+        {
+            string sql = "SELECT * FROM `restaurant` ORDER BY note DESC LIMIT 5";
+            MySqlCommand cmd = new MySqlCommand(sql, ApplicationDBContext.con);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            List<Restaurant> restos = new List<Restaurant>();
+            while (rdr.Read())
+            {
+                Restaurant temp = new Restaurant();
+                temp.Id = (int)rdr[0];
+                temp.Name = (string)rdr[1];
+                temp.Phone = (string)rdr[2];
+                temp.Commentary = (string)rdr[3];
+                restos.Add(temp);
+            }
+            return restos;
+        }
     }
 }

@@ -4,9 +4,9 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <h2>Les meilleurs restaurants de Grenoble</h2>
+    <h2>Les 5 meilleurs restaurants</h2>
     <ul>
-        @foreach (var p in ViewBag.allResto)
+        @foreach (var p in ViewBag.fiveBest)
         {
             <li>
                 @p.Name : @p.Commentary
