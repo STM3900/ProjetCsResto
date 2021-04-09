@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `restaurant` (
 --
 
 INSERT INTO `restaurant` (`id`, `name`, `phone`, `commentary`, `email`, `street`, `zip`, `city`, `lastTimeVisited`, `note`, `noteCommentary`) VALUES
-(1, 'Le quignon', '0685458575', 'Nous vous proposons du pain dans tous ses états', 'mie@pain.fr', '32 rue du pain', 25858, 'pain', '02/03/2010', 4, 'J\'ai adoré'),
+(1, 'Le quignon', '0685458575', 'Nous vous proposons du pain dans tous ses états', 'mie@pain.fr', '32 rue du pain', 25858, 'pain', '02/03/2010', 4, 'Très bon'),
 (2, 'La maison des gnocchi', '0659858547', 'La ou sont créé les gnocchi', 'gnocchi@miam.it', '22 rue des pates', 24869, 'Gnoland', '12/52/2020', 5, 'Délicieux '),
 (3, 'La soupe aux choux', '0245859665', 'miam la soupe', 'soupe@soupe.fr', '32 rue de la soupe', 20000, 'soupacity', '02/03/2014', 1, 'Ne sert pas de burgers'),
 (4, 'Pasta et basta', '0674857745', 'Le meilleur des pates, ici', 'pasta@basta.fr', '9 rue des pates', 25874, 'PastaTown', '20/02/2020', 3, 'Pas mal'),

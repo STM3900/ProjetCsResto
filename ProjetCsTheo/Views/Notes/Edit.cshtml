@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Edit resto";
+    Restaurant r = ViewBag.resto;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Édition de la node du restaurant @r.Name</h1>
+    <form method="post" action="EditQuery">
+
+        <input type="text" value="@r.Id" name="id" hidden />
+
+        <label for="note">Note</label>
+        <input type="number" value="@r.Note" min="1" max="5" name="note" required /><br />
+
+        <label for="noteCommentary">Commentaire de la note</label>
+        <input type="text" value="@r.NoteCommentary" name="noteCommentary" required /><br />
+
+        <input type="submit" value="Modifier la note" />
+    </form>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Listing" asp-action="Index">Retour</a>
+</div>

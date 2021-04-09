@@ -136,5 +136,12 @@ namespace ds.Database
             }
             return resto;
         }
+
+        public static void editRestoNote(Restaurant resto)
+        {
+            String sql = "UPDATE `restaurant` SET `note`='" + resto.Note + "',`noteCommentary`='" + resto.NoteCommentary + "' WHERE id=" + resto.Id;
+            MySqlCommand cmd = new MySqlCommand(sql, ApplicationDBContext.con);
+            cmd.ExecuteNonQuery();
+        }
     }
 }

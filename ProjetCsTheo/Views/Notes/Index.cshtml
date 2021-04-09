@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Liste des restaurants Notes</h1>
+    <div>
+        @foreach (var p in ViewBag.allResto)
+        {
+            <ul>
+                <li>Nom : @p.Name</li>
+                <li>Note : @p.Note/5</li>
+                <li>Commentaire : @p.NoteCommentary</li>
+            </ul>
+            <form action="Notes/Edit" method="post">
+                <input type="number" hidden name="idResto" value="@p.Id" />
+                <input type="submit" value="Modifier la note" name="edit" />
+            </form>
+        }
+    </div>
+</div>
