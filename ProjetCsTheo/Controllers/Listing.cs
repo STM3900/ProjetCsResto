@@ -36,6 +36,12 @@ namespace ProjetCsTheo.Controllers
             return View();
         }
 
+        public IActionResult Delete(int idResto)
+        {
+            ApplicationDBContext.deleteResto(idResto);
+            return RedirectToAction("Index");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

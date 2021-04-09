@@ -12,6 +12,10 @@
             <li>Adresse : @p.Street, @p.City</li>
             <li>Date de la dernière visite : @p.LastTimeVisited</li>
             <li>Note de la dernière visite @p.Note/5</li>
+            <form action="Listing/Delete" method="post">
+                <input type="number" hidden name="idResto" value="@p.Id" />
+                <input type="submit" value="Supprimer le restaurant" name="Delete resto" />
+            </form>
         </ul>
         }
     </div>

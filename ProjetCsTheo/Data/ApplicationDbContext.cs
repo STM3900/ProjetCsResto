@@ -81,5 +81,12 @@ namespace ds.Database
             }
             return restos;
         }
+
+        public static void deleteResto(int id)
+        {
+            string sql = "DELETE FROM restaurant WHERE id=" + id;
+            MySqlCommand cmd = new MySqlCommand(sql, ApplicationDBContext.con);
+            cmd.ExecuteNonQuery();
+        }
     }
 }
