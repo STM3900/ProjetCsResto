@@ -2,20 +2,28 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Liste des restaurants Notes</h1>
-    <div>
+<div>
+    <h1 class="display-4 mb-4">Liste des restaurants Notes</h1>
+    <div class="row">
         @foreach (var p in ViewBag.allResto)
         {
-            <ul>
-                <li>Nom : @p.Name</li>
-                <li>Note : @p.Note/5</li>
-                <li>Commentaire : @p.NoteCommentary</li>
-            </ul>
-            <form action="Notes/Edit" method="post">
-                <input type="number" hidden name="idResto" value="@p.Id" />
-                <input type="submit" value="Modifier la note" name="edit" />
-            </form>
+            <div class="col-4">
+                <div class="col-12">
+                    <div class="card my-2">
+                        <div class="card-body">
+                            <h5 class="card-title">@p.Name</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Note de la dernière visite @p.Note/5</h6>
+                            <p class="card-text">"@p.NoteCommentary"</p>
+                        </div>
+                        <div class="card-body">
+                            <form action="Notes/Edit" method="post" class="card-link">
+                                <input type="number" hidden name="idResto" value="@p.Id" />
+                                <input type="submit" class="btn btn-primary" value="Modifier la note" name="edit" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
     </div>
 </div>
